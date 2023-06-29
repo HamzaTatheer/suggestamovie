@@ -69,7 +69,7 @@ jobs:
           aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           application_name: suggestamovie
           environment_name: Suggestamovie-env
-          region: us-east-2
+          region: ${{secrets.AWS_DEPLOY_REGION}}
           version_label: "e-learn-${{ steps.format-time.outputs.replaced }}"
           deployment_package: deploy.zip
 
