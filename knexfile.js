@@ -23,7 +23,7 @@ module.exports = {
         host: process.env.RDS_HOSTNAME,
         port:  process.env.RDS_PORT,
         user:  process.env.RDS_HOSTNAME,
-        password: process.env.RDS_HOSTNAME,
+        password: process.env.RDS_PASSWORD,
         database: process.env.RDS_DB_NAME
     },
     migrations: {
