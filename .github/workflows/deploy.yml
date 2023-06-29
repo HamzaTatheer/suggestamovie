@@ -19,4 +19,4 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        npm run start_prod
+        npx run start_prod
