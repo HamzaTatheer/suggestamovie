@@ -8,6 +8,7 @@ const logger = createLogger({
     new WinstonCloudWatch({
       logGroupName: 'suggestamovie',
       logStreamName: 'general',
+      awsRegion: process.env.AWS_DEPLOY_REGION,
       awsOptions: {
         credentials: {
           accessKeyId: process.env.AWS_ACCESS_KEY_ID,
