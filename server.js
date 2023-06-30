@@ -2,9 +2,6 @@ require('dotenv').config()
 const express = require('express');
 const logger = require('./logger');
 const loggerMiddleware = require('./middlware/loggerMiddleware')(logger);
-const knex = require('knex');
-// Create a Knex instance with the development configuration
-const db = knex(require('./knexfile').development);
 
 const app = express();
 app.use(express.json());
@@ -13,9 +10,9 @@ app.use(loggerMiddleware);
 // Retrieve all posts
 app.get('/posts', async (req, res) => {
   try {
-    const posts = await db('posts').select('*');
-    res.json(posts);
+    res.json({});
   } catch (error) {
+    console.log(error);
     logger.error("server.js get /posts \n" + error);
     res.status(500).json({ error: 'Failed to retrieve posts' });
   }
@@ -25,9 +22,9 @@ app.get('/posts', async (req, res) => {
 app.post('/posts', async (req, res) => {
   const { title, body } = req.body;
   try {
-    const newPost = await db('posts').insert({ title, body });
-    res.json(newPost);
+    res.json({});
   } catch (error) {
+    console.log(error);
     logger.error("server.js post /posts \n" + error);
     res.status(500).json({ error: 'Failed to create post' });
   }

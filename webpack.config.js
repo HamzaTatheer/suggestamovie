@@ -7,21 +7,21 @@ module.exports = {
     filename: 'bundle.js', // Specify the name of the output bundle file
   },
   target:'node',
-  externals: {
-    // Possible drivers for knex - we'll ignore them
-    'sqlite3': 'sqlite3',
-    'mariasql': 'mariasql',
-    'mssql': 'mssql',
-    'mysql': 'mysql',
-    'oracle': 'oracle',
-    'strong-oracle': 'strong-oracle',
-    'oracledb': 'oracledb',
-    'pg': 'pg',
-    'pg-query-stream': 'pg-query-stream',
-    'better-sqlite3': 'better-sqlite3',
-    'tedious': 'tedious',
-    'mysql2': 'mysql2'
-  },
+  // externals: {
+  //   // Possible drivers for knex - we'll ignore them
+  //   'sqlite3': 'sqlite3',
+  //   'mariasql': 'mariasql',
+  //   'mssql': 'mssql',
+  //   'mysql': 'mysql',
+  //   'oracle': 'oracle',
+  //   'strong-oracle': 'strong-oracle',
+  //   'oracledb': 'oracledb',
+  //   'pg': 'pg',
+  //   'pg-query-stream': 'pg-query-stream',
+  //   'better-sqlite3': 'better-sqlite3',
+  //   'tedious': 'tedious',
+  //   'mysql2': 'mysql2'
+  // },
   module: {
     rules: [
       {
