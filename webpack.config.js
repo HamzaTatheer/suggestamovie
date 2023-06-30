@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './server.js', // Specify the entry file of your application
+  entry: './src/server.js', // Specify the entry file of your application
   output: {
     path: path.resolve(__dirname, 'dist'), // Specify the output directory
     filename: 'bundle.js', // Specify the name of the output bundle file
