@@ -7,7 +7,8 @@ module.exports = {
     filename: 'bundle.js', // Specify the name of the output bundle file
   },
   target:'node',
-  // externals: {
+  externals: {
+    'pg-hstore':'pg-hstore'
   //   // Possible drivers for knex - we'll ignore them
   //   'sqlite3': 'sqlite3',
   //   'mariasql': 'mariasql',
@@ -21,7 +22,7 @@ module.exports = {
   //   'better-sqlite3': 'better-sqlite3',
   //   'tedious': 'tedious',
   //   'mysql2': 'mysql2'
-  // },
+  },
   module: {
     rules: [
       {

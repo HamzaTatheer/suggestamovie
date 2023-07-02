@@ -5,6 +5,7 @@ const loggerMiddleware = require('./middlware/loggerMiddleware')(logger);
 
 // index.js
 const express = require('express');
+var hpp = require('hpp');
 const bodyParser = require('body-parser');
 const Post = require('./db/models/post');
 
@@ -16,6 +17,8 @@ app.use(loggerMiddleware);
 //ejs views setup
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
+//prevent attacks
+app.use(hpp());
 
 //constants
 const port = process.env.PORT ? process.env.PORT : 3000;
@@ -25,6 +28,7 @@ const port = process.env.PORT ? process.env.PORT : 3000;
 // Create a post
 app.post('/posts', async (req, res) => {
   try {
+    console.log(req.body);
     const { title, body } = req.body;
     const post = await Post.create({ title, body });
     res.redirect('/');  
@@ -37,7 +41,9 @@ app.post('/posts', async (req, res) => {
 // Get all posts
 app.get('/', async (req, res) => {
   try {
-    const posts = await Post.findAll();
+    const posts = await Post.findAll({order: [
+      ['createdAt', 'DESC'],
+    ]});
     res.render('index', { posts });
   } catch (error) {
     console.error('Error getting posts:', error);

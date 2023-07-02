@@ -12,6 +12,11 @@
       .container {
         max-width: 800px;
       }
+
+      .form-group{
+        margin-bottom: 10px;
+      }
+
       .form-group label {
         font-weight: bold;
         padding-bottom: 2px;
@@ -34,43 +39,49 @@
       .post-card p {
         color: #f8f9fa;
       }
-      .create-post-button {
-        text-align: right;
-        margin-top: 2px;
-      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-6">
+        <div class="col-12">
           <h1>Movie Suggestions</h1>
-        </div>
-        <div class="col-6 create-post-button">
-          <form action="/posts" method="POST">
-            <button type="submit" class="btn btn-primary create-post-btn">Give Suggestion</button>
-          </form>
         </div>
       </div>
       <br/>
       <form action="/posts" method="POST">
+
         <div class="form-group">
-          <label for="title">Movie Name:</label>
+          <label for="title">Movie/Show Name:</label>
           <input type="text" id="title" name="title" class="form-control" required>
         </div>
-        <br/>
+
         <div class="form-group">
           <label for="body">Tell Me About It:</label>
           <textarea id="body" name="body" class="form-control" required></textarea>
         </div>
+        <br/>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary create-post-btn">Give Suggestion</button>
+        </div>
+
+        <hr/>
+
+
       </form>
       <br/>
       <% posts.forEach(post => { %>
         <div class="post-card">
             <span class="access-time-info">
                 <small><strong>Created At:</strong> <%= post.createdAt.toLocaleString() %></small>
+
+                <%if (post.createdAt.toLocaleString() != post.updatedAt.toLocaleString()){%>
                 <small><strong>Updated At:</strong> <%= post.updatedAt.toLocaleString() %></small>  
-            </span>
+                <%} else {%>
+                  <small><strong>Updated At:</strong> -</small>  
+                <%}%>
+              </span>
 
             <h3><%= post.title %></h3>
             <p><%= post.body %></p>
