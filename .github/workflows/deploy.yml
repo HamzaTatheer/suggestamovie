@@ -1,6 +1,12 @@
 name: production
 
 on:
+  workflow_dispatch:
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - LICENSE
+      - docs
   push:
     branches:
       - main
